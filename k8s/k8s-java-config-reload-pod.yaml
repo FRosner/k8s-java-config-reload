@@ -3,11 +3,20 @@ kind: Pod
 metadata:
   creationTimestamp: null
   labels:
-    run: k8s-java-config-reload
-  name: k8s-java-config-reload
+    run: k8s-java-config-reload-pod
+  name: k8s-java-config-reload-pod
 spec:
   containers:
     - image: k8s-java-config-reload
       name: k8s-java-config-reload
       imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: config-volume
+          mountPath: /config
+  volumes:
+    - name: config-volume
+      configMap:
+        # Provide the name of the ConfigMap containing the files you want
+        # to add to the container
+        name: k8s-java-config-reload-configmap
   restartPolicy: Always

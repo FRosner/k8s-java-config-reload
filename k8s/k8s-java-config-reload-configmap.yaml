@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  config.properties: |-
+    name=Frank
+    sleepIntervalMillis=1000
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: k8s-java-config-reload-configmap
